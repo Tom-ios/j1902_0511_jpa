@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <h3>Person List</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>age</th>
+            <th>do</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="person:${persons}">
+            <td th:text="${person.getId()}"></td>
+            <td th:text="${person.name}"></td>
+            <td th:text="${person.age}"></td>
+            <td>
+                <button th:onclick="'javascript:shanchu('+${person.getId()}+')'">删除</button>
+                <button th:onclick="'javascript:xiugai('+${person.id}+')'">修改</button>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</body>
+    <script type="text/javascript">
+        function shanchu(pid){
+            alert(pid);
+            window.location.href="del?pid="+pid;
+        }
+        function xiugai(pid){
+            alert(pid);
+            window.location.href="update?="+pid;
+        }
+
+    </script>
+</html>
